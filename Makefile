@@ -199,7 +199,7 @@ UPROGS=\
 	$U/_xargs\
 	$U/_time\
 	$U/_prime\
-
+	$U/_prime2\
 
 
 ifeq ($(LAB),$(filter $(LAB), pgtbl lock))
