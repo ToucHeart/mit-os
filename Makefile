@@ -198,7 +198,7 @@ UPROGS=\
 	$U/_find\
 	$U/_xargs\
 	$U/_time\
-
+	$U/_prime\
 
 
 
