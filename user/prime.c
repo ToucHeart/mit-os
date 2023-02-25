@@ -4,7 +4,9 @@
 
 #define PIPE_READ 0
 #define PIPE_WRITE 1
-
+/*
+others' version
+*/
 void child(int *p)
 {
     int x;

@@ -1,7 +1,9 @@
 #include "kernel/types.h"
 #include "kernel/stat.h"
 #include "user/user.h"
-
+/*
+implement by myself
+*/
 void f(int *p)
 {
     close(p[1]);
