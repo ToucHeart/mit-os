@@ -6,6 +6,7 @@
 #include "memlayout.h"
 #include "spinlock.h"
 #include "proc.h"
+#include "sysinfo.h"
 
 uint64
 sys_exit(void)
@@ -111,6 +112,10 @@ sys_trace(void)
 uint64
 sys_sysinfo(void)
 {
-
+  uint64 info;
+  if (argaddr(0, &info) < 0)
+    return -1;
+  ((struct sysinfo *)info)->nproc = get_used_proc_num();
+  // ((struct sysinfo *)info)->freemem = ;
   return 0;
 }

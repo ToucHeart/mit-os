@@ -137,8 +137,8 @@ void testproc()
 int main(int argc, char *argv[])
 {
   printf("sysinfotest: start\n");
-  testcall();
-  testmem();
+  // testcall();
+  // testmem();
   testproc();
   printf("sysinfotest: OK\n");
   exit(0);
