@@ -198,8 +198,8 @@ UPROGS=\
 	$U/_find\
 	$U/_xargs\
 	$U/_time\
-	$U/_prime\
-	$U/_prime2\
+	$U/_primes\
+	$U/_primes2\
 
 
 ifeq ($(LAB),$(filter $(LAB), pgtbl lock))
