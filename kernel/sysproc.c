@@ -108,3 +108,9 @@ sys_trace(void)
   p->trace_mask |= syscallnum;
   return 0;
 }
+uint64
+sys_sysinfo(void)
+{
+
+  return 0;
+}
