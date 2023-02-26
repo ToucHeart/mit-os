@@ -104,5 +104,7 @@ sys_trace(void)
   int syscallnum;
   if (argint(0, &syscallnum) < 0)
     return -1;
-  return syscallnum;
+  struct proc *p = myproc();
+  p->trace_mask |= syscallnum;
+  return 0;
 }
