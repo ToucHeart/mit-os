@@ -36,11 +36,11 @@ argraw(int n)
   switch (n)
   {
   case 0:
-    return p->trapframe->a0;
+    return p->trapframe->a0; // first argument
   case 1:
-    return p->trapframe->a1;
+    return p->trapframe->a1; // second argument
   case 2:
-    return p->trapframe->a2;
+    return p->trapframe->a2; //...
   case 3:
     return p->trapframe->a3;
   case 4:

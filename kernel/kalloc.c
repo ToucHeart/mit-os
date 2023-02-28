@@ -80,7 +80,14 @@ kalloc(void)
   return (void *)r;
 }
 
-int get_free_memory()
+int collect_free_memory()
 {
-  return 0;
+  struct run *r = kmem.freelist;
+  int size = 0;
+  while (r)
+  {
+    size += PGSIZE;
+    r = r->next;
+  }
+  return size;
 }

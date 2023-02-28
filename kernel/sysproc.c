@@ -109,13 +109,18 @@ sys_trace(void)
   p->trace_mask |= syscallnum;
   return 0;
 }
+
 uint64
 sys_sysinfo(void)
 {
-  uint64 info;
-  if (argaddr(0, &info) < 0)
+  uint64 infoaddr;
+  if (argaddr(0, &infoaddr) < 0)
     return -1;
-  ((struct sysinfo *)info)->nproc = get_used_proc_num();
-  // ((struct sysinfo *)info)->freemem = ;
+  struct proc *p = myproc();
+  struct sysinfo info;
+  info.freemem = collect_free_memory();
+  info.nproc = get_used_proc_num();
+  if (copyout(p->pagetable, infoaddr, (char *)&info, sizeof(info)) < 0)
+    return -1;
   return 0;
 }

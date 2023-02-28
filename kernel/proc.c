@@ -10,8 +10,6 @@ struct cpu cpus[NCPU];
 
 struct proc proc[NPROC];
 
-static int used_proc_num = 0;
-
 struct proc *initproc;
 
 int nextpid = 1;
@@ -127,7 +125,6 @@ allocproc(void)
 found:
   p->pid = allocpid();
   p->state = USED;
-  used_proc_num++;
   // Allocate a trapframe page.
   if ((p->trapframe = (struct trapframe *)kalloc()) == 0)
   {
@@ -174,12 +171,20 @@ freeproc(struct proc *p)
   p->killed = 0;
   p->xstate = 0;
   p->state = UNUSED;
-  used_proc_num--;
 }
 
 int get_used_proc_num()
 {
-  return used_proc_num;
+  struct proc *p;
+  int num = 0;
+  for (p = proc; p < &proc[NPROC]; p++)
+  {
+    if (p->state != UNUSED)
+    {
+      num++;
+    }
+  }
+  return num;
 }
 
 // Create a user page table for a given process,
